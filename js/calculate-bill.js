@@ -1,9 +1,53 @@
 //get a reference to the calculate button
-
+var calculateBtnElement = document.querySelector(".calculateBtn");
 //get a reference to the billTotal element
-
+var billTotalElement = document.querySelector(".billTotal");
 //get a reference to the billString
+var billStringElement = document.querySelector(".billString");
+//Button to press to calculate the total
+//Where the total should be displayed
 
+
+// add event listener
+function calculateBtnClicked(){
+    // get the string entered in the textArea
+    var billString = billStringElement.value;
+    //split the string
+    var billItems = billString.split(",");
+    // a variable for the total phone bill.
+    var billTotal = 0;
+    //loop over all the bill items
+    for (var i=0;i<billItems.length;i++){
+        var billItem = billItems[i].trim();
+        if (billItem === "call"){
+            billTotal += 2.75;
+        }
+        else if (billItem === "sms"){
+            billTotal += 0.75;
+        }
+    }
+    
+    //round to two decimals
+    var roundedBillTotal = billTotal.toFixed(2);
+    billTotalElement.innerHTML = roundedBillTotal;
+
+    if (roundedBillTotal >= 20){
+        billTotalElement.classList.add("warning")
+    }
+    else if (roundedBillTotal <= 20){
+        billTotalElement.classList.remove("warning")
+    }
+    
+    if (roundedBillTotal >= 30){
+        billTotalElement.classList.add("danger")
+    }
+    else if (roundedBillTotal <= 30){
+        billTotalElement.classList.remove("danger")
+    }
+}
+
+calculateBtnElement.addEventListener('click', calculateBtnClicked);
+ 
 //create the function that will be called when the calculate button is pressed
 //  * this function should read the string value entered - split it on a comma.
 //  * loop over all the entries in the the resulting list
