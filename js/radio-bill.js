@@ -7,8 +7,8 @@ var smstotal = document.querySelector(".smsTotalTwo");
 var totall = document.querySelector(".totalTwo");
 var color = document.querySelector(".orange");
 //create a variable that will keep track of the total bill
-var callsTotal = 0;
-var smsTotal = 0;
+var totalCalls = 0;
+var totalsms = 0;
 
 //add an event listener for when the radio button is pressed
 function textBillTotal(){
@@ -21,27 +21,27 @@ function textBillTotal(){
 
     //update the correct total
     if (billItemType === "call"){
-        callsTotal += 2.75;
+        totalCalls += 2.75;
     }
     else if (billItemType === "sms"){
-        smsTotal += 0.75;
+        totalsms += 0.75;
     }
-    calltotal.innerHTML = callsTotal.toFixed(2);
-    smstotal.innerHTML = smsTotal.toFixed(2);
-    var totalCost = callsTotal + smsTotal;
-    totall.innerHTML = totalCost.toFixed(2)
+    calltotal.innerHTML = totalCalls.toFixed(2);
+    smstotal.innerHTML = totalsms.toFixed(2);
+    var totalBill = totalCalls + totalsms;
+    totall.innerHTML = totalBill.toFixed(2)
 
 
-if (totalCost >= 30){
+if (totalBill >= 30){
     color.classList.add("warning");
 }
-else if(totalCost <= 30){
+else if(totalBill <= 30){
     color.classList.remove("warning")
 }
-if (totalCost >= 50){
+if (totalBill >= 50){
     color.classList.add("danger");
 }
-else if(totalCost <= 50){
+else if(totalBill <= 50){
     color.classList.remove("danger")
 }
 }
