@@ -68,7 +68,7 @@ addButtonElem.addEventListener('click', Settings);
    
 
 function colorAdd(){
-    if (totallCost > warningLevel){
+    if (totallCost >= warningLevel){
         colour.classList.add("warning");
         colour.classList.remove("danger")
     }
